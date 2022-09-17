@@ -13,21 +13,10 @@ export class FeedbackForm extends React.Component {
 
   leaveFeedback = evt => {
     // console.log(evt.target.dataset.voice);
-    const datasetVoice = evt.target.dataset.voice;
+    const dataVoice = evt.target.dataset.voice;
 
-    if (datasetVoice === 'good') {
-      this.setState(prevState => ({
-        good: prevState.good + 1,
-      }));
-    } else if (datasetVoice === 'neutral') {
-      this.setState(prevState => ({
-        neutral: prevState.neutral + 1,
-      }));
-    } else if (datasetVoice === 'bad') {
-      this.setState(prevState => ({
-        bad: prevState.bad + 1,
-      }));
-    }
+    this.setState(prevState => ({ [dataVoice]: prevState[dataVoice] + 1 }))
+   
   };
 
   countTotalFeedback = ({ good, neutral, bad }) => good + neutral + bad;
