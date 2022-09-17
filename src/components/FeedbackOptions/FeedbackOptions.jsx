@@ -1,15 +1,16 @@
 import React from 'react';
+import { Container, VoiceButton } from "./FeedbackOptions.styled";
 
 export const FeedbackOptions = ({ option, onLeaveFeedback }) => (
-  <div>
-    <button type="button" data-voice="good" onClick={onLeaveFeedback}>
+  <Container>
+    <VoiceButton type="button" data-voice="good" onClick={onLeaveFeedback}>
       Good
-    </button>
-    <button type="button" data-voice="neutral" onClick={onLeaveFeedback}>
+    </VoiceButton>
+    <VoiceButton type="button" data-voice="neutral" onClick={onLeaveFeedback}>
       Neutral
-    </button>
-    <button type="button" data-voice="bad" onClick={onLeaveFeedback}>
+    </VoiceButton>
+    <VoiceButton type="button" data-voice="bad" onClick={onLeaveFeedback}>
       Bad
-    </button>
-  </div>
+    </VoiceButton>
+  </Container>
 );
