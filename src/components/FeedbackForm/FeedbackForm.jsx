@@ -1,4 +1,5 @@
 import React from 'react';
+import { Section } from '../Section/Section';
 import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
 import { Statistics } from '../Statistics/Statistics';
 
@@ -10,7 +11,7 @@ export class FeedbackForm extends React.Component {
   };
 
   leaveFeedback = evt => {
-    console.log(evt.target.dataset.voice);
+    // console.log(evt.target.dataset.voice);
     const datasetVoice = evt.target.dataset.voice;
 
     if (datasetVoice === 'good') {
@@ -35,15 +36,13 @@ export class FeedbackForm extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <h1>Please leave feedback</h1>
+        <Section title="Please leave feedback">
           <FeedbackOptions
             options={this.state}
             onLeaveFeedback={this.leaveFeedback}
           />
-        </div>
-        <div>
-          <h2>Statistics</h2>
+        </Section>
+        <Section title="Statistics">
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
@@ -53,7 +52,7 @@ export class FeedbackForm extends React.Component {
               this.state
             )}
           />
-        </div>
+        </Section>
       </div>
     );
   }
