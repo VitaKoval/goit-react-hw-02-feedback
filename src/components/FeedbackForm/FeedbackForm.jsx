@@ -45,9 +45,7 @@ export class FeedbackForm extends React.Component {
         </Section>
 
         <Section title="Statistics">
-          {this.state.good === 0 &&
-          this.state.neutral === 0 &&
-          this.state.bad === 0 ? (
+          {Object.values(this.state).every(value => value === 0) ? (
             <Notification message="There is no feedback" />
           ) : (
             <Statistics
