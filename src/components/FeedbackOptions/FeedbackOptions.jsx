@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { VoiceButton } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
@@ -13,3 +14,8 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     </VoiceButton>
   ));
 };
+
+FeedbackOptions.propTypes = {
+  options:PropTypes.object,
+  onLeaveFeedback:PropTypes.func,
+}

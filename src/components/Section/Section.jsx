@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Group } from './Section.styled';
 
 export const Section = ({ title, children }) => {
   return (
-    <section>
+    <Group>
       {title && <h2>{title}</h2>}
       {children}
-    </section>
+    </Group>
   );
 };
+
+Section.propTypes = {
+  title: PropTypes.string,
+}
+
