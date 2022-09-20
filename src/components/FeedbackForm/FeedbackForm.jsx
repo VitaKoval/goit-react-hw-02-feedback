@@ -15,14 +15,12 @@ export class FeedbackForm extends React.Component {
     // console.log(evt.target.dataset.voice);
     const dataVoice = evt.target.dataset.voice;
 
-    this.setState(prevState => ({ [dataVoice]: prevState[dataVoice] + 1 }))
-   
+    this.setState(prevState => ({ [dataVoice]: prevState[dataVoice] + 1 }));
   };
 
   countTotalFeedback = ({ good, neutral, bad }) => good + neutral + bad;
   countPositiveFeedbackPercentage = ({ good, neutral, bad }) =>
     good === 0 ? 0 : Math.ceil((good / (good + neutral + bad)) * 100);
-
   render() {
     return (
       <div>
