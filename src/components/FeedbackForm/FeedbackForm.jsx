@@ -19,8 +19,10 @@ export class FeedbackForm extends React.Component {
   };
 
   countTotalFeedback = ({ good, neutral, bad }) => good + neutral + bad;
+
   countPositiveFeedbackPercentage = ({ good, neutral, bad }) =>
     good === 0 ? 0 : Math.ceil((good / (good + neutral + bad)) * 100);
+
   render() {
     return (
       <div>
