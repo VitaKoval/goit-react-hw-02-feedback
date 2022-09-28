@@ -11,17 +11,21 @@ export class FeedbackForm extends React.Component {
     bad: 0,
   };
 
-  leaveFeedback = evt => {
-    // console.log(evt.target.dataset.voice);
-    const dataVoice = evt.target.dataset.voice;
-
-    this.setState(prevState => ({ [dataVoice]: prevState[dataVoice] + 1 }));
+  leaveFeedback = option => {
+    // console.log(option);
+    this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
 
-  countTotalFeedback = ({ good, neutral, bad }) => good + neutral + bad;
+  countTotalFeedback = options => {
+    return Object.values(options).reduce((acc, option) => {
+      return acc + option;
+    }, 0);
+  };
 
-  countPositiveFeedbackPercentage = ({ good, neutral, bad }) =>
-    good === 0 ? 0 : Math.ceil((good / (good + neutral + bad)) * 100);
+  countPositiveFeedbackPercentage = ({ good }) =>
+    good === 0
+      ? 0
+      : Math.ceil((good / this.countTotalFeedback(this.state)) * 100);
 
   render() {
     return (
@@ -34,7 +38,8 @@ export class FeedbackForm extends React.Component {
         </Section>
 
         <Section title="Statistics">
-          {Object.values(this.state).every(value => value === 0) ? (
+          
+          {(this.countTotalFeedback(this.state) === 0) ? (
             <Notification message="There is no feedback" />
           ) : (
             <Statistics

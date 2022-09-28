@@ -8,7 +8,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
       type="button"
       key={option}
       data-voice={option}
-      onClick={onLeaveFeedback}
+      onClick={()=>onLeaveFeedback(option)}
     >
       {option}
     </VoiceButton>
@@ -16,6 +16,6 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object,
+  options: PropTypes.objectOf(PropTypes.number.isRequired),
   onLeaveFeedback: PropTypes.func,
 };
